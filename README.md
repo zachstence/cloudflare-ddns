@@ -2,12 +2,18 @@
 Automatically update your Cloudflare DNS when your public IP changes
 
 <p align="center">
-    <img alt="license mit" src="https://img.shields.io/github/license/zachstence/cloudflare-ddns?style=for-the-badge" />
+    <a href="https://github.com/zachstence/cloudflare-ddns/blob/main/LICENSE">
+        <img alt="license mit" src="https://img.shields.io/github/license/zachstence/cloudflare-ddns?style=for-the-badge" />
+    </a>
     <br />
-    <img alt="docker pulls" src="https://img.shields.io/docker/pulls/zachstence/cloudflare-ddns?style=for-the-badge" />
-    <img alt="docker size" src="https://img.shields.io/docker/image-size/zachstence/cloudflare-ddns?style=for-the-badge" />
+    <a href="https://hub.docker.com/r/zachstence/cloudflare-ddns">
+        <img alt="docker pulls" src="https://img.shields.io/docker/pulls/zachstence/cloudflare-ddns?style=for-the-badge" />
+        <img alt="docker size" src="https://img.shields.io/docker/image-size/zachstence/cloudflare-ddns?style=for-the-badge" />
+    </a>
     <br />
-    <img alt="wakatime" src="https://wakatime.com/badge/user/2a0a4013-ea89-43b7-99d9-1a215b4c34d0/project/440bac4f-98d5-4762-ac2f-117b0ea4c805.svg?style=for-the-badge" />
+    <a href="#">
+        <img alt="wakatime" src="https://wakatime.com/badge/user/2a0a4013-ea89-43b7-99d9-1a215b4c34d0/project/440bac4f-98d5-4762-ac2f-117b0ea4c805.svg?style=for-the-badge" />
+    </a>
 </p>
 
 ## Table of Contents
