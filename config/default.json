@@ -1,0 +1,8 @@
+{
+    "cloudflare": {
+        "apiToken": "",
+        "zoneId": "",
+        "recordName": ""
+    },
+    "interval": 5
+}

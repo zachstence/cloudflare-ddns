@@ -1,12 +1,12 @@
 import axios from "axios";
-import { CloudflareResponse, DnsRecord } from "./types";
 
-const API_TOKEN = "";
+import { CloudflareResponse, DnsRecord } from "./types";
+import { config } from "../config";
 
 const api = axios.create({
     baseURL: "https://api.cloudflare.com/client/v4",
     headers: {
-        Authorization: `Bearer ${API_TOKEN}`,
+        Authorization: `Bearer ${config.cloudflare.apiToken}`,
     },
 });
 

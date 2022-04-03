@@ -1,38 +1,39 @@
 import { editRecord, getRecord, listRecords } from "./cloudflare";
 import { getIp } from "./ipify";
+import { config } from "./config";
 
-const ZONE_ID = "";
+const { interval, cloudflare } = config;
+const { zoneId, recordName } = cloudflare;
 
-const RECORD_NAME = "";
+const intervalMs = Math.round(interval * 60 * 1000);
 
-const INTERVAL = 1; // minutes
-
-let logged: boolean = false;
+let doLog: boolean = false;
 
 const run = async () => {
     try {
         const expectedIp = await getIp();
     
-        const records = await listRecords(ZONE_ID, RECORD_NAME);
-        if (!records.length) throw new Error(`No DNS records found matching zoneId=${ZONE_ID} name=${RECORD_NAME}`);
+        const records = await listRecords(zoneId, recordName);
+        if (!records.length) throw new Error(`No DNS records found matching zoneId=${zoneId} name=${recordName}`);
         const record = records[0];
         
         const { id, content } = record;
         if (content !== expectedIp) {
-            console.log(`Updating DNS record with id=${id} (${RECORD_NAME}) from '${content}' to '${expectedIp}'`);
-            await editRecord(ZONE_ID, id, expectedIp);
+            console.log(`Updating DNS record with id=${id} (${recordName}) from '${content}' to '${expectedIp}'`);
+            await editRecord(zoneId, id, expectedIp);
 
-            const editedRecord = await getRecord(ZONE_ID, id);
+            const editedRecord = await getRecord(zoneId, id);
             if (editedRecord.content !== expectedIp) throw new Error("DNS record update failed");
 
-            logged = false;
-        } else if (!logged) {
-            console.log(`DNS record content matches your current public IP, nothing more to do. Checking every ${INTERVAL} minutes, but not logging unless an update is necessary.`)
-            logged = true;
+            console.log("Success!");
+            doLog = true;
+        } else if (doLog) {
+            console.log(`DNS record content matches your current public IP, nothing more to do. Checking every ${interval} minutes, but not logging unless an update is necessary.`)
+            doLog = false;
         }
     } catch (e) {
         console.error("DNS query/update failed:\n", e);
     }
 };
 
-run();
+setInterval(run, intervalMs);
