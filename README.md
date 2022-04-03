@@ -19,7 +19,7 @@ Automatically update your Cloudflare DNS when your public IP changes
 ## Usage
 1. [Create a Cloudflare API token](https://developers.cloudflare.com/api/tokens/create/) with at least the following configuration
 
-    ![docs/permissions.png](docs/permissions.PNG)
+    ![docs/permissions.png](docs/permissions.png)
 
     Permissions
     - Zone - Zone - Read
