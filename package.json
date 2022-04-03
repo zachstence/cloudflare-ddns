@@ -1,0 +1,27 @@
+{
+  "name": "cloudflare-ddns",
+  "version": "1.0.0",
+  "description": "Automatically update your Cloudflare DNS when your public IP changes",
+  "main": "index.js",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "dev": "nodemon src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zachstence/cloudflare-ddns.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zachstence/cloudflare-ddns/issues"
+  },
+  "homepage": "https://github.com/zachstence/cloudflare-ddns#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.15",
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.3"
+  }
+}
