@@ -38,4 +38,5 @@ const run = async () => {
     }
 };
 
+run();
 setInterval(run, intervalMs);
