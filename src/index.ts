@@ -7,7 +7,9 @@ const { zoneId, recordName } = cloudflare;
 
 const intervalMs = Math.round(interval * 60 * 1000);
 
-let doLog: boolean = false;
+let doLog: boolean = true;
+
+console.log(`App started! Checking DNS for '${recordName}' every ${interval} minutes...`);
 
 const run = async () => {
     try {
