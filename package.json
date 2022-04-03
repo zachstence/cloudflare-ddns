@@ -4,7 +4,7 @@
   "description": "Automatically update your Cloudflare DNS when your public IP changes",
   "main": "index.js",
   "scripts": {
-    "start": "ts-node src/index.ts",
+    "start": "NODE_ENV=production ts-node src/index.ts",
     "dev": "nodemon src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
