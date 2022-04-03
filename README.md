@@ -13,7 +13,7 @@ Automatically update your Cloudflare DNS when your public IP changes
 ## Table of Contents
 - [Usage](#usage)
   - [Run using Docker](#run-using-docker)
-  - [$un using `docker-compose`](#run-using-docker-compose)
+  - [Run using `docker-compose`](#run-using-docker-compose)
 - [Future Features](#future-features)
 
 ## Usage
