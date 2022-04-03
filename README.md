@@ -19,13 +19,13 @@ Automatically update your Cloudflare DNS when your public IP changes
 ## Table of Contents
 - [Usage](#usage)
   - [Run using Docker](#run-using-docker)
-  - [$un using `docker-compose`](#run-using-docker-compose)
+  - [Run using `docker-compose`](#run-using-docker-compose)
 - [Future Features](#future-features)
 
 ## Usage
-1. [Create a Cloudflare API token](https://developers.cloudflare.com/api/tokens/create/) with at least the following configuration
+1. [Create a Cloudflare API token](https://developers.cloudflare.com/api/tokens/create/) with the following configuration
 
-    ![docs/permissions.png](docs/permissions.PNG)
+    ![docs/permissions.png](docs/permissions.png)
 
     Permissions
     - Zone - Zone - Read
