@@ -10,17 +10,18 @@ const api = axios.create({
     },
 });
 
-export const listRecords = async (zoneId: string, name?: string): Promise<DnsRecord[]> => {
+export const getRecordByName = async (zoneId: string, name: string): Promise<DnsRecord> => {
     const res = await api.get<CloudflareResponse<DnsRecord[]>>(`/zones/${zoneId}/dns_records`, {
         params: { name },
     });
     
     if (!res.data.success) throw res.data.errors;
+    if (!res.data.result[0]) throw new Error(`No records found in zone ${zoneId} mataching name ${name}`)
 
-    return res.data.result;
+    return res.data.result[0];
 };
 
-export const getRecord = async (zoneId: string, recordId: string): Promise<DnsRecord> => {
+export const getRecordById = async (zoneId: string, recordId: string): Promise<DnsRecord> => {
     const res = await api.get<CloudflareResponse<DnsRecord>>(`/zones/${zoneId}/dns_records/${recordId}`);
 
     if (!res.data.success) throw res.data.errors;

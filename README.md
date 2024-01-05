@@ -38,25 +38,14 @@ Automatically update your Cloudflare DNS when your public IP changes
 
     ![docs/zone-id.png](docs/zone-id.png)
 
-3. Create a config file following the format in [`config/default.json`](config/default.json).
-
-    ```json
-    {
-        "cloudflare": {
-            "apiToken": "",
-            "zoneId": "",
-            "recordName": ""
-        },
-        "interval": 5
-    }
-    ```
+3. Copy [`config.json.template`](config.json.template) to a new file named `config.json`
 
     | Config                  | Description                                                  | Example                                    |
     | ----------------------- | ------------------------------------------------------------ | ------------------------------------------ |
     | `cloudflare.apiToken`   | A Cloudflare API Token with the [proper permissions](#usage) | `XDX6YXn0MU2tpwJUa49UYLrtS5r4q-Ia9ng6H5Pu` |
-    | `cloudflare.zoneId`     | The Zone ID of the domain you want to update DNS for         | `gq3pvvxfr6x4fpfdgz7w7n4d3ckfk9pk`         |
-    | `cloudflare.recordName` | The name of the record you would like to update              | `example.com`                              |
-    | `interval`              | How often to check your DNS records (in minutes)<sup>1</sup> | `5`                                        |
+    | `zones.zoneId`          | The Zone ID of the domain you want to update DNS for         | `gq3pvvxfr6x4fpfdgz7w7n4d3ckfk9pk`         |
+    | `zones.recordNames`     | The name of each record you would like to update             | `example.com`                              |
+    | `intervalSeconds`       | How often to check your DNS records (in seconds)<sup>1</sup> | `300`                                        |
 
     <sup>1</sup> [Cloudflare's Rate Limits](https://support.cloudflare.com/hc/en-us/articles/200171456-How-many-API-calls-can-I-make) are pretty lenient, so feel free to set the interval as small as you want.
 
@@ -65,7 +54,7 @@ Automatically update your Cloudflare DNS when your public IP changes
     #### Run using Docker
     ```sh
     docker run \
-        -v /path/to/config.json:/app/config/production.json \
+        -v /path/to/config.json:/app/config.json \
         zachstence/cloudflare-ddns
     ```
 
@@ -77,10 +66,9 @@ Automatically update your Cloudflare DNS when your public IP changes
     cloudflare-ddns:
         image: zachstence/cloudflare-ddns
         volumes:
-        - /path/to/config.json:/app/config/production.json:ro
+        - /path/to/config.json:/app/config.json:ro
         restart: unless-stopped
     ```
 
 ## Future Features
-- Configuration to update multiple zones/records
 - Accept file for Cloudflare API token to enable better security (Docker secrets)
